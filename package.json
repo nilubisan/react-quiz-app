@@ -1,0 +1,8 @@
+{
+  "name": "react-quiz-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:nilubisan/react-quiz-app.git",
+  "author": "nilubisan <r.nas9329@gmail.com>",
+  "license": "MIT"
+}
