@@ -1,10 +1,14 @@
 {
   "name": "react-quiz-app",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.tsx",
   "repository": "git@github.com:nilubisan/react-quiz-app.git",
   "author": "nilubisan <r.nas9329@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "webpack serve --config ./config/webpack.dev.ts",
+    "build": "webpack --config ./config/webpack.prod.ts"
+  },
   "dependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
@@ -15,12 +19,14 @@
     "@types/webpack": "^5.28.0",
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^10.0.0",
+    "css-loader": "^6.5.1",
     "css-minimizer-webpack-plugin": "^3.2.0",
     "css-modules-typescript-loader": "^4.0.1",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.4.5",
     "style-loader": "^3.3.1",
     "ts-loader": "^9.2.6",
+    "ts-node": "^10.4.0",
     "typescript": "^4.5.2",
     "typescript-plugin-css-modules": "^3.4.0",
     "webpack": "^5.65.0",
