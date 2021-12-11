@@ -15,11 +15,14 @@ const QuestionCard:FC<Props> = ({ question, answers, userAnswer, questionNumber,
         </p>
         <p> { question } </p>
         <div>
-            {answers.map((answer) => {
-                <button disabled = {userAnswer} onClick={callback}>
+            {answers.map((answer, i) =>
+                <>
+                 <button disabled = {userAnswer} onClick={callback} key={i}>
                     <span> {answer} </span>
                 </button>
-            })}
+                <br />
+                </>
+            )}
         </div>
     </div>
 
