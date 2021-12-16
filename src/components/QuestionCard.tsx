@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-
+import parse from 'html-react-parser';
 interface Props {
     question: string;
     answers: string[];
@@ -13,15 +13,19 @@ const QuestionCard:FC<Props> = ({ question, answers, userAnswer, questionNumber,
         <p className="questionNumber">
             Question: {questionNumber} / {totalQuestions}
         </p>
-        <p> { question } </p>
+        {
+            parse(`<p> ${question} </p>`)
+        }
         <div>
-            {answers.map((answer, i) =>
-                <>
-                 <button disabled = {userAnswer} onClick={callback} key={i}>
-                    <span> {answer} </span>
+            {answers.map((answer, i) => 
+                <div key={answer}>
+                 <button disabled = {userAnswer} value={answer} onClick={callback} key={i}>
+                    {
+                    parse(`<span> ${answer} </span>`)
+                    }
                 </button>
                 <br />
-                </>
+                </div>
             )}
         </div>
     </div>

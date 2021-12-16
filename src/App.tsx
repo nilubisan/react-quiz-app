@@ -4,11 +4,12 @@ import style from "style.css";
 import { fetchQuizQuestions } from "API";
 import { Difficulty, QuestionState } from "API";
 
+
 const TOTAL_QUESTIONS = 10;
 
 interface UserAnswer {
     question: string,
-    userAnswer: string,
+    answer: string,
     correctAnswer: string,
     correct: boolean
 }
@@ -23,12 +24,32 @@ const App: FC = () => {
     const startQuiz = async () => {
         setLoading(true);
         setGameOver(false);
+        setNumber(0);
+        setScore(0);
+        setUserAnswers([]);
         const newAnswers = await fetchQuizQuestions(TOTAL_QUESTIONS, Difficulty.EASY );
         setQuestions(newAnswers)
         setLoading(false);
     }
-    const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {};
-    const nextQuestion = () => {}
+    const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
+        if(!gameOver) {
+            const answer = e.currentTarget.value;
+            const correct = questions[number].correct_answer === answer;
+            if(correct) setScore(prev => prev + 1);
+            const answerObject = {
+                question: questions[number].question,
+                correctAnswer: questions[number].correct_answer,
+                answer,
+                correct,
+            }
+            setUserAnswers((prev) => [...prev, answerObject])
+        }
+    };
+    const nextQuestion = () => {
+        const nextQuestion = number + 1;
+        if(nextQuestion === TOTAL_QUESTIONS) setGameOver(true);
+        else setNumber(nextQuestion)
+    }
 
     return (
         <div className="app">
@@ -39,7 +60,6 @@ const App: FC = () => {
             }
             { !gameOver ? <p className="score"> Score: {score}</p> : null }
             { !loading && !gameOver &&
-            <>
             <QuestionCard
                 question={questions[number].question}
                 answers={questions[number].answers}
@@ -48,29 +68,17 @@ const App: FC = () => {
                 userAnswer={userAnswers ? userAnswers[number] : undefined}
                 callback={checkAnswer}
             />
+            }
+            {
+                !gameOver &&
+                !loading &&
+                userAnswers.length === number + 1 &&
+                number !== TOTAL_QUESTIONS - 1 ? (
             <button className="next" onClick={nextQuestion}>
                 Next Question
             </button>
-            </>
+                ) : null
 }
-            {/* <div>
-                {
-                questions.length === 0 ? "LOADING..." : 
-                questions.map((ex, i) =>
-                    <>
-                    <p key={i}> {ex.question} </p>
-                    {ex.answers.map((a:string, l:number) =>
-                        <>
-                        <input type="radio" key={l} id={a} />
-                        <label htmlFor={a}>{a}</label>
-                        <br></br>
-                        </>
-                        )
-                    }
-                    </>
-                )
-                }
-            </div> */}
         </div>
     )
 }
