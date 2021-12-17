@@ -1,0 +1,44 @@
+@font-face {
+    font-family: 'roboto';
+    src: url('./fonts/roboto.ttf') format('ttf');
+    font-weight: 500;
+    font-style: normal;
+  }
+
+@font-face {
+    font-family: 'montserrat-medium';
+    src: url('./fonts/Montserrat-Medium.ttf') format('ttf');
+    font-style: normal;
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: 'montserrat-regular';
+    src: url('./fonts/Montserrat-Regular.ttf') format('ttf');
+    font-style: normal;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 50px auto 0;
+    align-items: center;
+}
+
+.app__header {
+    text-align: center;
+    color: #fff;
+    font-size: 4rem;
+    font-family: 'roboto', serif;
+}
+
+.app__start-button {
+    border: none;
+    outline: none;
+    border-radius: 30px;
+    padding: 10px 30px;
+    cursor: pointer;
+    font-family: 'montserrat-medium';
+    font-size: 1rem;
+}

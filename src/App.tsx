@@ -1,13 +1,12 @@
 import React, { FC, useState, useEffect } from "react";
 import QuestionCard from "./components/QuestionCard"
-import style from "style.css";
+import style from "app-styles.css";
 import { fetchQuizQuestions } from "API";
 import { Difficulty, QuestionState } from "API";
 
-
 const TOTAL_QUESTIONS = 10;
 
-interface UserAnswer {
+export interface UserAnswer {
     question: string,
     answer: string,
     correctAnswer: string,
@@ -27,8 +26,8 @@ const App: FC = () => {
         setNumber(0);
         setScore(0);
         setUserAnswers([]);
-        const newAnswers = await fetchQuizQuestions(TOTAL_QUESTIONS, Difficulty.EASY );
-        setQuestions(newAnswers)
+        const newAnswers = await fetchQuizQuestions(TOTAL_QUESTIONS, Difficulty.EASY);
+        setQuestions(newAnswers);
         setLoading(false);
     }
     const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -52,14 +51,14 @@ const App: FC = () => {
     }
 
     return (
-        <div className="app">
-            <h1> Quiz App</h1>
+        <div className={style["app"]}>
+            <h1 className={style["app__header"]}> Quiz App</h1>
             { gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
-                <button className="start" onClick={startQuiz}> Start quiz</button>
+                <button className={style["app__start-button"]} onClick={startQuiz}>Start quiz</button>
             ) : null
             }
             { !gameOver ? <p className="score"> Score: {score}</p> : null }
-            { !loading && !gameOver &&
+            { !loading && !gameOver ?
             <QuestionCard
                 question={questions[number].question}
                 answers={questions[number].answers}
@@ -68,6 +67,7 @@ const App: FC = () => {
                 userAnswer={userAnswers ? userAnswers[number] : undefined}
                 callback={checkAnswer}
             />
+            : loading ? "loading..." : null
             }
             {
                 !gameOver &&
