@@ -1,6 +1,7 @@
-import React, { FC, useState, useEffect } from "react";
+import React, { FC, useState } from "react";
 import QuestionCard from "./components/QuestionCard"
 import style from "app-styles.css";
+import questionCardStyles from "./components/question-card-styles.css"
 import { fetchQuizQuestions } from "API";
 import { Difficulty, QuestionState } from "API";
 
@@ -20,6 +21,7 @@ const App: FC = () => {
     const [userAnswers, setUserAnswers] = useState<UserAnswer[]>([]);
     const [score, setScore] = useState(0);
     const [gameOver, setGameOver] = useState(true);
+    const [correctAnswer, setCorrectAnswer] = useState("");
     const startQuiz = async () => {
         setLoading(true);
         setGameOver(false);
@@ -29,12 +31,20 @@ const App: FC = () => {
         const newAnswers = await fetchQuizQuestions(TOTAL_QUESTIONS, Difficulty.EASY);
         setQuestions(newAnswers);
         setLoading(false);
-    }
+    };
+
     const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
         if(!gameOver) {
             const answer = e.currentTarget.value;
             const correct = questions[number].correct_answer === answer;
-            if(correct) setScore(prev => prev + 1);
+            if(correct)  {
+                setScore(prev => prev + 1);
+                e.currentTarget.classList.add(questionCardStyles["card__correct-answer"]);
+            }
+            else {
+                e.currentTarget.classList.add(questionCardStyles["card__wrong-answer"]);
+                setCorrectAnswer(questions[number].correct_answer);
+            }
             const answerObject = {
                 question: questions[number].question,
                 correctAnswer: questions[number].correct_answer,
@@ -46,6 +56,7 @@ const App: FC = () => {
     };
     const nextQuestion = () => {
         const nextQuestion = number + 1;
+        console.log(userAnswers);
         if(nextQuestion === TOTAL_QUESTIONS) setGameOver(true);
         else setNumber(nextQuestion)
     }
@@ -53,11 +64,7 @@ const App: FC = () => {
     return (
         <div className={style["app"]}>
             <h1 className={style["app__header"]}> Quiz App</h1>
-            { gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
-                <button className={style["app__start-button"]} onClick={startQuiz}>Start quiz</button>
-            ) : null
-            }
-            { !gameOver ? <p className="score"> Score: {score}</p> : null }
+            { !gameOver ? <p className={style["app__score"]}> Score: {score}</p> : null }
             { !loading && !gameOver ?
             <QuestionCard
                 question={questions[number].question}
@@ -66,6 +73,7 @@ const App: FC = () => {
                 totalQuestions = {TOTAL_QUESTIONS}
                 userAnswer={userAnswers ? userAnswers[number] : undefined}
                 callback={checkAnswer}
+                correctAnswer={correctAnswer}
             />
             : loading ? "loading..." : null
             }
@@ -74,11 +82,15 @@ const App: FC = () => {
                 !loading &&
                 userAnswers.length === number + 1 &&
                 number !== TOTAL_QUESTIONS - 1 ? (
-            <button className="next" onClick={nextQuestion}>
-                Next Question
+            <button className={style["app__next-btn"]} onClick={nextQuestion}>
+                NEXT
             </button>
                 ) : null
-}
+            }
+                        { gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
+                <button className={style["app__start-button"]} onClick={startQuiz}>Start new quiz</button>
+            ) : null
+            }
         </div>
     )
 }
