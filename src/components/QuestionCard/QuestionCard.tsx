@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import parse from 'html-react-parser';
-import { UserAnswer } from "../App";
+import { UserAnswer } from "../../App";
 import styles from "./question-card-styles.css";
 interface Props {
     question: string;
