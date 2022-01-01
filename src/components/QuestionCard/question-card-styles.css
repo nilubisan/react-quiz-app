@@ -1,61 +1,59 @@
 @font-face {
-    font-family: 'montserrat-regular';
-    src: url('../../fonts/Montserrat-Regular.ttf') format('ttf');
-    font-style: normal;
+  font-family: "montserrat-regular";
+  src: url("../../fonts/Montserrat-Regular.ttf") format("ttf");
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'montserrat-bold';
-    src: url('../../fonts/Montserrat-Bold.ttf') format('ttf');
-    font-style: normal;
+  font-family: "montserrat-bold";
+  src: url("../../fonts/Montserrat-Bold.ttf") format("ttf");
+  font-style: normal;
 }
 
 .card {
-    font-family: 'montserrat-regular';
-    color: #fff;
-    
+  font-family: "montserrat-regular";
+  color: #fff;
 }
 
 .card__question {
-    text-align: center;
-    font-size: 2.2rem;
-    font-family: 'Montserrat-Bold';
-    font-weight: bold;
-    padding: 0;
-    margin: 0 0 20px;
+  text-align: center;
+  font-size: 2.2rem;
+  font-family: "Montserrat-Bold";
+  font-weight: bold;
+  padding: 0;
+  margin: 0 0 20px;
 }
 
 .card__answer-btns-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .card__answer-btn-inner {
-    padding: 20px;
+  padding: 20px;
 }
 
 .card__answer-btn {
-    border: none;
-    outline: none;
-    border-radius: 30px;
-    width: 250px;
-    padding: 20px 30px;
-    cursor: pointer;
-    font-size: 1.2rem;
-
+  border: none;
+  outline: none;
+  border-radius: 30px;
+  width: 250px;
+  padding: 20px 30px;
+  cursor: pointer;
+  font-size: 1.2rem;
 }
 
 .card__question-number {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
 .card__wrong-answer {
-    background-color: #DC143C;
-    color: #fff;
+  background-color: #dc143c;
+  color: #fff;
 }
 
 .card__correct-answer {
-    background-color: #00ff00;
-    color: #fff;
+  background-color: #00ff00;
+  color: #fff;
 }
