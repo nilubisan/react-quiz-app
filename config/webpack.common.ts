@@ -3,6 +3,7 @@ const ASSET_PATH = process.env.ASSET_PATH || '/';
 // const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const paths = require('./paths');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
   entry: '/src/index.tsx',
@@ -12,14 +13,7 @@ module.exports = {
     filename: '[name].[hash].js',
   },
   plugins: [
-    // new CopyWebpackPlugin({
-    //   patterns: [
-    //     {
-    //       from: paths.public,
-    //       to: 'assets',
-    //     },
-    //   ],
-    // }),
+    new ESLintPlugin({}),
     new HtmlWebpackPlugin({
       title: 'Test page',
       template: `${paths.src}/template.html`,

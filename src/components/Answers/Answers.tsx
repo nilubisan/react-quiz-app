@@ -5,8 +5,8 @@ import { UserAnswer } from "../../App";
 const Answers: FC<{ userAnswers: UserAnswer[] }> = ({ userAnswers }) => {
   return (
     <div>
-      {userAnswers.map((item: UserAnswer) => (
-        <div>
+      {userAnswers.map((item: UserAnswer, i: number) => (
+        <div key={i}>
           {parse(`<p>${item.question}</p>`)}
           <p>Your answer: {item.answer}</p>
           <p>Correct answer: {item.correctAnswer}</p>

@@ -56,7 +56,6 @@ const App: FC = () => {
 
   const finishGame = () => {
     setGameOver(true);
-    setNumber(0);
   };
 
   const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -115,10 +114,14 @@ const App: FC = () => {
       !showUserAnswers ? (
         <>
           <Score score={score}></Score>
+          <div className={style["app__buttons"]}>
           <Button
             buttonType={SHOW_ANSWERS}
             clickHandler={() => setShowUserAnswers(true)}
           />
+          <Button buttonType={START_QUIZ} clickHandler={startQuiz}></Button>
+          </div>
+
         </>
       ) : null}
       {gameOver && userAnswers.length === TOTAL_QUESTIONS && showUserAnswers ? (

@@ -33,28 +33,12 @@
   font-family: "roboto", serif;
 }
 
-.app__start-button {
-  border: none;
-  outline: none;
-  border-radius: 30px;
-  padding: 10px 30px;
-  cursor: pointer;
-  font-family: "montserrat-medium";
-  font-size: 1rem;
-}
-
 .app__score {
   color: #fff;
   font-family: "montserrat-medium";
   font-size: 1.5rem;
 }
 
-.app__next-btn {
-  border: none;
-  outline: none;
-  padding: 15px;
-  cursor: pointer;
-  font-family: "roboto";
-  font-weight: bold;
-  margin-top: 50px;
+.app__buttons {
+  display: flex;
 }

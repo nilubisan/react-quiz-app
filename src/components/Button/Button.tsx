@@ -22,7 +22,7 @@ const Button: FC<{ buttonType: string; clickHandler: () => void }> = ({
       btnTitle = "FINISH";
       break;
     case START_QUIZ:
-      classname = "start-btn";
+      classname = "btn";
       btnTitle = "START QUIZ";
       break;
     case SHOW_ANSWERS:
