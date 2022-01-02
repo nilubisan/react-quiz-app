@@ -1,0 +1,28 @@
+.btn {
+  border: none;
+  outline: none;
+  padding: 15px;
+  cursor: pointer;
+  font-family: "roboto";
+  font-weight: bold;
+  margin-top: 50px;
+}
+
+.start-btn {
+  border: none;
+  outline: none;
+  border-radius: 30px;
+  padding: 10px 30px;
+  cursor: pointer;
+  font-family: "montserrat-medium";
+  font-size: 1rem;
+}
+
+.finish-btn {
+  border: 2px solid #000;
+  border-radius: 30px;
+  padding: 10px 30px;
+  cursor: pointer;
+  font-family: "montserrat-medium";
+  font-size: 1rem;
+}

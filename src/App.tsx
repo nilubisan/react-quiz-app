@@ -1,11 +1,13 @@
 import React, { FC, useState } from "react";
 import QuestionCard from "./components/QuestionCard/QuestionCard";
+import Score from "./components/Score/Score";
 import style from "app-styles.css";
 import questionCardStyles from "./components/QuestionCard/question-card-styles.css";
 import { fetchQuizQuestions } from "API";
 import { Difficulty, QuestionState } from "API";
 import Answers from "./components/Answers/Answers";
-
+import Button from "./components/Button/Button";
+import { START_QUIZ, NEXT_QUESTION, FINISH_QUIZ, SHOW_ANSWERS } from "./utils";
 const TOTAL_QUESTIONS = 5;
 
 export interface UserAnswer {
@@ -33,12 +35,17 @@ const App: FC = () => {
   const gameOnAndLastQuestion =
     gameOn && userAnswers.length === TOTAL_QUESTIONS;
 
-  const startQuiz = async () => {
+  const resetGame = () => {
     setLoading(true);
     setGameOver(false);
     setNumber(0);
     setScore(0);
     setUserAnswers([]);
+    setShowUserAnswers(false);
+  };
+
+  const startQuiz = async () => {
+    resetGame();
     const newAnswers = await fetchQuizQuestions(
       TOTAL_QUESTIONS,
       Difficulty.EASY
@@ -75,11 +82,6 @@ const App: FC = () => {
     }
   };
 
-  const nextQuestion = () => {
-    const nextQuestion = number + 1;
-    setNumber(nextQuestion);
-  };
-
   return (
     <div className={style["app"]}>
       <h1 className={style["app__header"]}> Quiz App</h1>
@@ -100,34 +102,30 @@ const App: FC = () => {
         "loading..."
       ) : null}
       {gameOnAndNotLastQuestion ? (
-        <button className={style["app__next-btn"]} onClick={nextQuestion}>
-          NEXT
-        </button>
+        <Button
+          buttonType={NEXT_QUESTION}
+          clickHandler={() => setNumber((number) => number + 1)}
+        />
       ) : null}
       {gameOnAndLastQuestion ? (
-        <button className={style["app__next-btn"]} onClick={finishGame}>
-          Finish game
-        </button>
+        <Button buttonType={FINISH_QUIZ} clickHandler={finishGame} />
       ) : null}
       {gameOver &&
       userAnswers.length === TOTAL_QUESTIONS &&
       !showUserAnswers ? (
-        <button
-          className={style["app__next-btn"]}
-          onClick={() => setShowUserAnswers(true)}
-        >
-          Show answers
-        </button>
+        <>
+          <Score score={score}></Score>
+          <Button
+            buttonType={SHOW_ANSWERS}
+            clickHandler={() => setShowUserAnswers(true)}
+          />
+        </>
       ) : null}
       {gameOver && userAnswers.length === TOTAL_QUESTIONS && showUserAnswers ? (
         <Answers userAnswers={userAnswers} />
       ) : null}
       {number === 0 && gameOver === true ? (
-        <div>
-          <button className={style["app__start-button"]} onClick={startQuiz}>
-            Start new quiz
-          </button>
-        </div>
+        <Button buttonType={START_QUIZ} clickHandler={startQuiz}></Button>
       ) : null}
     </div>
   );
