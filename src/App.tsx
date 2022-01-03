@@ -8,7 +8,8 @@ import { Difficulty, QuestionState } from "API";
 import Answers from "./components/Answers/Answers";
 import Button from "./components/Button/Button";
 import { START_QUIZ, NEXT_QUESTION, FINISH_QUIZ, SHOW_ANSWERS } from "./utils";
-const TOTAL_QUESTIONS = 5;
+import Form from "./components/Form/Form";
+import { quizOptions } from "./components/Form/Form";
 
 export interface UserAnswer {
   question: string;
@@ -31,9 +32,9 @@ const App: FC = () => {
   const gameOnAndNotLastQuestion =
     gameOn &&
     userAnswers.length === number + 1 &&
-    number !== TOTAL_QUESTIONS - 1;
+    number !== questions.length - 1;
   const gameOnAndLastQuestion =
-    gameOn && userAnswers.length === TOTAL_QUESTIONS;
+    gameOn && userAnswers.length === questions.length;
 
   const resetGame = () => {
     setLoading(true);
@@ -44,12 +45,9 @@ const App: FC = () => {
     setShowUserAnswers(false);
   };
 
-  const startQuiz = async () => {
+  const startQuiz = async (quizOptions:quizOptions) => {
     resetGame();
-    const newAnswers = await fetchQuizQuestions(
-      TOTAL_QUESTIONS,
-      Difficulty.EASY
-    );
+    const newAnswers = await fetchQuizQuestions(quizOptions);
     setQuestions(newAnswers);
     setLoading(false);
   };
@@ -84,6 +82,9 @@ const App: FC = () => {
   return (
     <div className={style["app"]}>
       <h1 className={style["app__header"]}> Quiz App</h1>
+      <Form
+        onFormSubmit={startQuiz}
+      />
       {!gameOver ? (
         <p className={style["app__score"]}> Score: {score}</p>
       ) : null}
@@ -92,7 +93,7 @@ const App: FC = () => {
           question={questions[number].question}
           answers={questions[number].answers}
           questionNumber={number + 1}
-          totalQuestions={TOTAL_QUESTIONS}
+          totalQuestions={questions.length}
           userAnswer={userAnswers ? userAnswers[number] : undefined}
           callback={checkAnswer}
           correctAnswer={correctAnswer}
@@ -110,7 +111,7 @@ const App: FC = () => {
         <Button buttonType={FINISH_QUIZ} clickHandler={finishGame} />
       ) : null}
       {gameOver &&
-      userAnswers.length === TOTAL_QUESTIONS &&
+      userAnswers.length === questions.length &&
       !showUserAnswers ? (
         <>
           <Score score={score}></Score>
@@ -119,16 +120,12 @@ const App: FC = () => {
             buttonType={SHOW_ANSWERS}
             clickHandler={() => setShowUserAnswers(true)}
           />
-          <Button buttonType={START_QUIZ} clickHandler={startQuiz}></Button>
           </div>
 
         </>
       ) : null}
-      {gameOver && userAnswers.length === TOTAL_QUESTIONS && showUserAnswers ? (
+      {gameOver && userAnswers.length === questions.length && showUserAnswers ? (
         <Answers userAnswers={userAnswers} />
-      ) : null}
-      {number === 0 && gameOver === true ? (
-        <Button buttonType={START_QUIZ} clickHandler={startQuiz}></Button>
       ) : null}
     </div>
   );

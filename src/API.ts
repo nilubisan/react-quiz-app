@@ -1,5 +1,6 @@
 import { Axios, AxiosResponse } from "axios";
 import { shuffleArray } from "./utils";
+import { quizOptions } from "./components/Form/Form";
 
 const axios = require("axios").default;
 export enum Difficulty {
@@ -21,11 +22,9 @@ export interface QuestionState extends Question {
   answers: [];
 }
 
-export const fetchQuizQuestions = async (
-  amount: number,
-  difficulty: Difficulty
-) => {
-  const url = `https://opentdb.com/api.php?amount=${amount}&difficulty=${difficulty}&type=multiple`;
+export const fetchQuizQuestions = async (quizOptions:quizOptions)  => {
+  const {difficulty, questionsAmount, category} = quizOptions;
+  const url = `https://opentdb.com/api.php?category=${category}&amount=${questionsAmount}&difficulty=${difficulty}&type=multiple`;
   const {
     data: { results },
   } = await axios.get(url);
