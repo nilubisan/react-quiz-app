@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import parse from "html-react-parser";
-import { UserAnswer } from "../../App";
-import styles from "./question-card-styles.css";
+import { UserAnswer } from "../App/App";
+import styles from "./style.css";
 interface Props {
   question: string;
   answers: string[];
@@ -24,6 +24,7 @@ const QuestionCard: FC<Props> = ({
     <p className={styles["card__question-number"]}>
       Question: {questionNumber} / {totalQuestions}
     </p>
+    <div className={styles["card__question-body"]}>
     {parse(`<p className=${styles["card__question"]}> ${question} </p>`)}
     <div className={styles["card__answer-btns-container"]}>
       {answers.map((answer, i) => (
@@ -42,6 +43,7 @@ const QuestionCard: FC<Props> = ({
           <br />
         </div>
       ))}
+    </div>
     </div>
   </div>
 );

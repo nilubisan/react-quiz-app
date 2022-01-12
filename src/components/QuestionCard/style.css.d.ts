@@ -7,6 +7,7 @@ interface CssExports {
   'card__answer-btns-container': string;
   'card__correct-answer': string;
   'card__question': string;
+  'card__question-body': string;
   'card__question-number': string;
   'card__wrong-answer': string;
 }

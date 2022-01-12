@@ -2,8 +2,9 @@
 // Please do not change this file!
 interface CssExports {
   'btn': string;
-  'finish_btn': string;
-  'std_btn': string;
+  'form': string;
+  'form__field': string;
+  'form__field-inner': string;
 }
 export const cssExports: CssExports;
 export default cssExports;

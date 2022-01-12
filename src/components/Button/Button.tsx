@@ -1,7 +1,7 @@
-import React, { EventHandler, FC } from "react";
+import React, { FC } from "react";
 import {
   NEXT_QUESTION,
-  START_QUIZ,
+  START_NEW_QUIZ,
   FINISH_QUIZ,
   SHOW_ANSWERS,
 } from "../../utils";
@@ -14,24 +14,24 @@ const Button: FC<{ buttonType: string; clickHandler: () => void }> = ({
   let classname: string, btnTitle: string;
   switch (buttonType) {
     case NEXT_QUESTION:
-      classname = "btn";
+      classname = "std_btn";
       btnTitle = "NEXT";
       break;
     case FINISH_QUIZ:
-      classname = "finish-btn";
+      classname = "finish_btn";
       btnTitle = "FINISH";
       break;
-    case START_QUIZ:
-      classname = "btn";
-      btnTitle = "START QUIZ";
+    case START_NEW_QUIZ:
+      classname = "std_btn";
+      btnTitle = "START NEW QUIZ";
       break;
     case SHOW_ANSWERS:
-      classname = "btn";
+      classname = "std_btn";
       btnTitle = "SHOW ANSWERS"
       break;
   }
   return (
-    <button className={styles[`${classname}`]} onClick={clickHandler}>
+    <button className={`${styles[classname]} ${styles['btn']}`} onClick={clickHandler}>
       {btnTitle}
     </button>
   );

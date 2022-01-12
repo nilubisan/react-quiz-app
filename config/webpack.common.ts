@@ -10,7 +10,7 @@ module.exports = {
   output: {
     publicPath: '/',
     path: paths.build,
-    filename: '[name].[hash].js',
+    filename: '[name].[fullhash].js',
   },
   plugins: [
     new ESLintPlugin({}),

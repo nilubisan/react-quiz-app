@@ -1,8 +1,8 @@
-import { Axios, AxiosResponse } from "axios";
 import { shuffleArray } from "./utils";
-import { quizOptions } from "./components/Form/Form";
-
+import { QuizOptions } from "./components/Form/Form";
+const API_URL = "https://opentdb.com";
 const axios = require("axios").default;
+
 export enum Difficulty {
   EASY = "easy",
   MEDIUM = "mediuim",
@@ -19,15 +19,15 @@ export interface Question {
 }
 
 export interface QuestionState extends Question {
-  answers: [];
+  answers: any[];
 }
 
-export const fetchQuizQuestions = async (quizOptions:quizOptions)  => {
-  const {difficulty, questionsAmount, category} = quizOptions;
-  const url = `https://opentdb.com/api.php?category=${category}&amount=${questionsAmount}&difficulty=${difficulty}&type=multiple`;
+export const fetchQuizQuestions = async (quizOptions: QuizOptions) => {
+  const { difficulty, questionsAmount, category } = quizOptions;
+  const url = `${API_URL}/api.php?category=${category}&amount=${questionsAmount}&difficulty=${difficulty}&type=multiple`;
   const {
     data: { results },
-  } = await axios.get(url);
+  } = await axios.get(url); 
   return results.map((question: Question) => ({
     ...question,
     answers: shuffleArray([
@@ -35,4 +35,11 @@ export const fetchQuizQuestions = async (quizOptions:quizOptions)  => {
       question.correct_answer,
     ]),
   }));
+};
+
+export const fetchCategories = async () => {
+  const url = `${API_URL}/api_category.php`;
+  const {data} = await axios.get(url);
+  return data["trivia_categories"];
+
 };

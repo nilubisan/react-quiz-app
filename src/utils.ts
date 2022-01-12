@@ -3,7 +3,7 @@ export const shuffleArray = (arr: any[]) =>
 
 export const NEXT_QUESTION = "NEXT QUESTION";
 export const FINISH_QUIZ = "FINISH GAME";
-export const START_QUIZ = "START QUIZ";
+export const START_NEW_QUIZ = "START NEW QUIZ";
 export const SHOW_ANSWERS = "SHOW ANSWERS";
 
 export const EASY = "easy";
