@@ -6,6 +6,7 @@ import { QuestionState } from "../../API";
 import { UserAnswer } from "../App/App";
 import Button from "../Button/Button";
 import { NEXT_QUESTION, FINISH_QUIZ } from "../../utils";
+import Loader from "../Loader/Loader";
 
 interface QuizProps {
   quizOver: boolean;
@@ -80,7 +81,7 @@ const Quiz: FC<QuizProps> = ({
         callback={checkAnswer}
         correctAnswer={correctAnswer}
       />
-      {loading ? "loading..." : null}
+      {loading ? <Loader /> : null}
       {quizOnAndNotLastQuestion ? (
         <Button
           buttonType={NEXT_QUESTION}

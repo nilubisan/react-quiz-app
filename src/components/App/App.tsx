@@ -13,6 +13,7 @@ import Form from "../Form/Form";
 import { QuizOptions } from "../Form/Form";
 import Header from "../Header/Header";
 import Quiz from "../Quiz/Quiz";
+import Loader from "../Loader/Loader";
 
 export interface UserAnswer {
   question: string;
@@ -74,7 +75,7 @@ const App: FC = () => {
           userAnswers={userAnswers}
           setUserAnswers={setUserAnswers}
         ></Quiz>
-      ) : null}
+      ) : loading ? <Loader /> : null}
       {quizOverAndSelectAction ? (
         <>
           <Score score={score} percentage={Math.floor((score/questions.length)*100)}></Score>

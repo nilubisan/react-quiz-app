@@ -1,6 +1,7 @@
 import React, { FC, useState, useEffect } from "react";
 import { EASY, MEDIUM, HARD } from "../../utils";
 import { fetchCategories } from "../../API";
+import Loader from "../Loader/Loader";
 import style from "./style.css";
 
 /// INTERFACES
@@ -122,7 +123,7 @@ const Form: FC<{ onFormSubmit: FormProps["FormSubmitHandler"] }> = ({
       <input type="submit" className={style["btn"]} value="Start quiz"></input>
     </form>
   ) : (
-    <p>loading</p>
+    <Loader />
   );
 };
 
