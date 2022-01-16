@@ -14,6 +14,7 @@ import { QuizOptions } from "../Form/Form";
 import Header from "../Header/Header";
 import Quiz from "../Quiz/Quiz";
 import Loader from "../Loader/Loader";
+import Greeting from "../Greeting/Greeting";
 
 export interface UserAnswer {
   question: string;
@@ -61,7 +62,12 @@ const App: FC = () => {
   return (
     <div className={style["app"]}>
       <Header title="Quiz app"></Header>
-      {quizNotStartedYet ? <Form onFormSubmit={startQuiz} /> : null}
+      {quizNotStartedYet ?
+      <>
+        <Greeting />
+        <Form onFormSubmit={startQuiz} /> 
+      </>
+      : null}
       {quizOn ? (
         <Quiz
           quizOver={quizOver}

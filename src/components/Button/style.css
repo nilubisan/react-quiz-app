@@ -8,6 +8,8 @@
   padding: 15px;
   margin: 20px auto;
   font-family: "roboto";
+  border-radius: 10px;
+  border: 1px solid #cbcbcb
 }
 
 .finish_btn {

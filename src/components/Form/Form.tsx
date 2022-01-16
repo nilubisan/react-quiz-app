@@ -120,7 +120,10 @@ const Form: FC<{ onFormSubmit: FormProps["FormSubmitHandler"] }> = ({
         </select>
       </div>
       </div>
-      <input type="submit" className={style["btn"]} value="Start quiz"></input>
+      <div className={style["form__btn-inner"]}>
+      <input type="submit" className={style["form__btn"]} value="Start"></input>
+      </div>
+      
     </form>
   ) : (
     <Loader />

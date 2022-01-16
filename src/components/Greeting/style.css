@@ -1,0 +1,13 @@
+.container {
+    margin-top: 50px;
+}
+
+.title {
+    text-align: center;
+}
+
+.body {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    line-height: 1.9rem;
+}
