@@ -1,22 +1,34 @@
+@font-face {
+  font-family: "montserrat-400";
+  src: url("../../fonts/Montserrat-Regular.ttf");
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "montserrat-500";
+  src: url("../../fonts/Montserrat-Medium.ttf");
+  font-style: normal;
+}
+
 .btn {
   border: none;
   outline: none;
   cursor: pointer;
+  padding: 10px 50px;
+  border-radius: 30px;
 }
 
 .std_btn {
-  padding: 15px;
-  margin: 20px auto;
-  font-family: "roboto";
-  border-radius: 10px;
-  border: 1px solid #cbcbcb
+  font-family: "Montserrat-400", sans-serif;
+  font-size: 1.2rem;
+  color: #fff;
+  background-color: #40e0d0;
 }
 
 .finish_btn {
-  border: 2px solid #000;
-  border-radius: 30px;
-  padding: 10px 30px;
-  font-family: "montserrat-medium";
-  font-size: 1rem;
+  font-family: "montserrat-500";
   margin: 20px auto;
+  color: #fff;
+  background-color: #33b3a6;
+  font-size: 1.3rem;
 }

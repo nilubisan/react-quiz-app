@@ -6,6 +6,7 @@ interface CssExports {
   'app__header': string;
   'app__quiz-body': string;
   'app__score': string;
+  'container': string;
 }
 export const cssExports: CssExports;
 export default cssExports;

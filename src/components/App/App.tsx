@@ -5,10 +5,7 @@ import { fetchQuizQuestions } from "API";
 import { QuestionState } from "API";
 import Answers from "../Answers/Answers";
 import Button from "../Button/Button";
-import {
-  START_NEW_QUIZ,
-  SHOW_ANSWERS
-} from "../../utils";
+import { START_NEW_QUIZ, SHOW_ANSWERS } from "../../utils";
 import Form from "../Form/Form";
 import { QuizOptions } from "../Form/Form";
 import Header from "../Header/Header";
@@ -61,48 +58,58 @@ const App: FC = () => {
 
   return (
     <div className={style["app"]}>
-      <Header title="Quiz app"></Header>
-      {quizNotStartedYet ?
-      <>
-        <Greeting />
-        <Form onFormSubmit={startQuiz} /> 
-      </>
-      : null}
-      {quizOn ? (
-        <Quiz
-          quizOver={quizOver}
-          setQuizOver={setQuizOver}
-          loading={loading}
-          score={score}
-          setScore={setScore}
-          questions={questions}
-          number={number}
-          setNumber={setNumber}
-          userAnswers={userAnswers}
-          setUserAnswers={setUserAnswers}
-        ></Quiz>
-      ) : loading ? <Loader /> : null}
-      {quizOverAndSelectAction ? (
-        <>
-          <Score score={score} percentage={Math.floor((score/questions.length)*100)}></Score>
-          <div className={style["app__buttons"]}>
-            <Button
-              buttonType={SHOW_ANSWERS}
-              clickHandler={() => setShowUserAnswers(true)}
-            />
+        <Header title="Quiz app"></Header>
+        <div className={style["container"]}>
+        {quizNotStartedYet ? (
+          <>
+            <Greeting />
+            <Form onFormSubmit={startQuiz} />
+          </>
+        ) : null}
+        {quizOn ? (
+          <Quiz
+            quizOver={quizOver}
+            setQuizOver={setQuizOver}
+            loading={loading}
+            score={score}
+            setScore={setScore}
+            questions={questions}
+            number={number}
+            setNumber={setNumber}
+            userAnswers={userAnswers}
+            setUserAnswers={setUserAnswers}
+          ></Quiz>
+        ) : loading ? (
+          <Loader />
+        ) : null}
+        {quizOverAndSelectAction ? (
+          <>
+            <Score
+              score={score}
+              percentage={Math.floor((score / questions.length) * 100)}
+            ></Score>
+            <div className={style["app__buttons"]}>
+              <Button
+                buttonType={SHOW_ANSWERS}
+                clickHandler={() => setShowUserAnswers(true)}
+              />
+              <Button
+                buttonType={START_NEW_QUIZ}
+                clickHandler={resetQuiz}
+              ></Button>
+            </div>
+          </>
+        ) : null}
+        {quizOverAndShowAnswers ? (
+          <>
+            <Answers userAnswers={userAnswers} />
             <Button
               buttonType={START_NEW_QUIZ}
               clickHandler={resetQuiz}
             ></Button>
-          </div>
-        </>
-      ) : null}
-      {quizOverAndShowAnswers ? (
-        <>
-          <Answers userAnswers={userAnswers} />
-          <Button buttonType={START_NEW_QUIZ} clickHandler={resetQuiz}></Button>
-        </>
-      ) : null}
+          </>
+        ) : null}
+      </div>
     </div>
   );
 };

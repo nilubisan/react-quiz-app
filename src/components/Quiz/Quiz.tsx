@@ -83,13 +83,17 @@ const Quiz: FC<QuizProps> = ({
       />
       {loading ? <Loader /> : null}
       {quizOnAndNotLastQuestion ? (
+        <div className={style["button-inner"]}>
         <Button
           buttonType={NEXT_QUESTION}
           clickHandler={() => setNumber((number: number) => number + 1)}
         />
+        </div>
       ) : null}
       {quizOnAndLastQuestion ? (
+        <div className={style["button-inner"]}>
         <Button buttonType={FINISH_QUIZ} clickHandler={finishQuiz} />
+        </div>
       ) : null}
     </div>
   );
