@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "Lato-600";
+    src: url("../../fonts/Lato-Bold.ttf");
+}
+
 .score__inner {
     margin: 50px 0;
     width: 100%;
@@ -9,6 +14,7 @@
 }
 
 .score__rating {
+    font-family: 'Lato-600', sans-serif;
     font-size: 10rem;
     margin: 0;
     padding: 0;
