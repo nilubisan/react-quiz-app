@@ -5,7 +5,7 @@ import style from "./style.css";
 import { QuestionState } from "../../API";
 import { UserAnswer } from "../App/App";
 import Button from "../Button/Button";
-import { NEXT_QUESTION, FINISH_QUIZ } from "../../utils";
+import { PREV_QUESTION, NEXT_QUESTION, FINISH_QUIZ, ABORT_QUIZ } from "../../utils";
 import Loader from "../Loader/Loader";
 
 interface QuizProps {
@@ -34,6 +34,7 @@ const Quiz: FC<QuizProps> = ({
   setUserAnswers,
 }) => {
   const [correctAnswer, setCorrectAnswer] = useState("");
+  const [activeButton, setActiveButton] = useState(false);
   const quizOn = !loading && !quizOver;
   const quizOnAndNotLastQuestion =
     quizOn &&
@@ -62,9 +63,20 @@ const Quiz: FC<QuizProps> = ({
         correct,
       };
       setUserAnswers((prev: UserAnswer[]) => [...prev, answerObject]);
+      setActiveButton(true);
     }
   };
 
+  // const prevButtonClickHandler = () => {
+  // }
+
+  const nextButtonClickHandler = () => {
+    if(activeButton) {
+      setNumber((number: number) => number + 1);
+      setActiveButton(false);
+    }
+
+  }
   const finishQuiz = () => {
     setQuizOver(true);
   };
@@ -82,17 +94,24 @@ const Quiz: FC<QuizProps> = ({
         correctAnswer={correctAnswer}
       />
       {loading ? <Loader /> : null}
-      {quizOnAndNotLastQuestion ? (
+      {quizOn ? (
         <div className={style["button-inner"]}>
-        <Button
-          buttonType={NEXT_QUESTION}
-          clickHandler={() => setNumber((number: number) => number + 1)}
-        />
+          {/* <Button
+            buttonType={PREV_QUESTION}
+            isActive={activeButton}
+            clickHandler={prevButtonClickHandler}
+          /> */}
+          <Button
+            buttonType={NEXT_QUESTION}
+            isActive={activeButton}
+            clickHandler={nextButtonClickHandler}
+          />
         </div>
       ) : null}
+      <Button buttonType={ABORT_QUIZ} clickHandler={finishQuiz} />
       {quizOnAndLastQuestion ? (
         <div className={style["button-inner"]}>
-        <Button buttonType={FINISH_QUIZ} clickHandler={finishQuiz} />
+          <Button buttonType={FINISH_QUIZ} clickHandler={finishQuiz} />
         </div>
       ) : null}
     </div>

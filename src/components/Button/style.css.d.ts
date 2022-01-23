@@ -2,8 +2,11 @@
 // Please do not change this file!
 interface CssExports {
   'btn': string;
-  'finish_btn': string;
-  'std_btn': string;
+  'btn_abort': string;
+  'btn_finish': string;
+  'btn_show-answers': string;
+  'btn_std': string;
+  'inactive': string;
 }
 export const cssExports: CssExports;
 export default cssExports;

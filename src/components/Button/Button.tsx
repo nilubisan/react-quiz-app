@@ -1,38 +1,25 @@
 import React, { FC } from "react";
-import {
-  NEXT_QUESTION,
-  START_NEW_QUIZ,
-  FINISH_QUIZ,
-  SHOW_ANSWERS,
-} from "../../utils";
+import { BUTTONS } from "./BUTTONS";
 import styles from "./style.css";
+import { NEXT_QUESTION } from "../../utils";
 
-const Button: FC<{ buttonType: string; clickHandler: () => void }> = ({
-  buttonType,
-  clickHandler,
-}) => {
-  let classname: string, btnTitle: string;
-  switch (buttonType) {
-    case NEXT_QUESTION:
-      classname = "std_btn";
-      btnTitle = "NEXT";
-      break;
-    case FINISH_QUIZ:
-      classname = "finish_btn";
-      btnTitle = "FINISH";
-      break;
-    case START_NEW_QUIZ:
-      classname = "std_btn";
-      btnTitle = "START NEW QUIZ";
-      break;
-    case SHOW_ANSWERS:
-      classname = "std_btn";
-      btnTitle = "SHOW ANSWERS"
-      break;
-  }
+interface ButtonProps {
+  buttonType: string;
+  isActive?: boolean;
+  clickHandler: () => void;
+}
+
+const Button: FC<ButtonProps> = ({ buttonType, clickHandler, isActive }) => {
+  let { className, title } = BUTTONS[buttonType];
+
   return (
-    <button className={`${styles[classname]} ${styles['btn']}`} onClick={clickHandler}>
-      {btnTitle}
+    <button
+      className={`${styles["btn"]} ${styles[className]} ${
+        isActive === false ? styles["inactive"] : null
+      }`}
+      onClick={clickHandler}
+    >
+      {title}
     </button>
   );
 };
