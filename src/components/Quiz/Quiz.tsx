@@ -38,10 +38,9 @@ const Quiz: FC<QuizProps> = ({
   const quizOn = !loading && !quizOver;
   const quizOnAndNotLastQuestion =
     quizOn &&
-    userAnswers.length === number + 1 &&
     number !== questions.length - 1;
   const quizOnAndLastQuestion =
-    quizOn && userAnswers.length === questions.length;
+    quizOn && number === questions.length - 1;
 
   const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (!quizOver) {
@@ -78,7 +77,7 @@ const Quiz: FC<QuizProps> = ({
 
   }
   const finishQuiz = () => {
-    setQuizOver(true);
+    if(activeButton) setQuizOver(true);
   };
 
   return (
@@ -94,7 +93,7 @@ const Quiz: FC<QuizProps> = ({
         correctAnswer={correctAnswer}
       />
       {loading ? <Loader /> : null}
-      {quizOn ? (
+      {quizOnAndNotLastQuestion ? (
         <div className={style["button-inner"]}>
           {/* <Button
             buttonType={PREV_QUESTION}
@@ -111,7 +110,7 @@ const Quiz: FC<QuizProps> = ({
       <Button buttonType={ABORT_QUIZ} clickHandler={finishQuiz} />
       {quizOnAndLastQuestion ? (
         <div className={style["button-inner"]}>
-          <Button buttonType={FINISH_QUIZ} clickHandler={finishQuiz} />
+          <Button buttonType={FINISH_QUIZ} clickHandler={finishQuiz} isActive={activeButton} />
         </div>
       ) : null}
     </div>
