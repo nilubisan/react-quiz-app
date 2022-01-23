@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import { BUTTONS } from "./BUTTONS";
 import styles from "./style.css";
-import { NEXT_QUESTION } from "../../utils";
 
 interface ButtonProps {
   buttonType: string;

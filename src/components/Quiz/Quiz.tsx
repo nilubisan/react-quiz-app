@@ -80,6 +80,10 @@ const Quiz: FC<QuizProps> = ({
     if(activeButton) setQuizOver(true);
   };
 
+  const abortQuiz = () => {
+    setQuizOver(true);
+  }
+
   return (
     <div className={style["quiz__body"]}>
       <p className={style["quiz__score"]}> Score: {score}</p>
@@ -107,7 +111,7 @@ const Quiz: FC<QuizProps> = ({
           />
         </div>
       ) : null}
-      <Button buttonType={ABORT_QUIZ} clickHandler={finishQuiz} />
+      <Button buttonType={ABORT_QUIZ} clickHandler={abortQuiz} />
       {quizOnAndLastQuestion ? (
         <div className={style["button-inner"]}>
           <Button buttonType={FINISH_QUIZ} clickHandler={finishQuiz} isActive={activeButton} />

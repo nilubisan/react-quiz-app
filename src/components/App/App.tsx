@@ -33,9 +33,9 @@ const App: FC = () => {
   const quizNotStartedYet = questions.length === 0 && !loading;
   const quizOn = !loading && !quizOver;
   const quizOverAndSelectAction =
-    quizOver && userAnswers.length !== 0 && !showUserAnswers;
+    quizOver && !quizNotStartedYet && !showUserAnswers;
   const quizOverAndShowAnswers =
-    quizOver && userAnswers.length === questions.length && showUserAnswers;
+    quizOver && showUserAnswers;
 
   const resetQuiz = () => {
     setQuizOver(true);
