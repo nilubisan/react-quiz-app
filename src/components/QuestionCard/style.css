@@ -13,7 +13,6 @@
 .card {
   font-family: "montserrat-400";
   color: #000;
-  
 }
 
 .card__question-body {
@@ -55,7 +54,7 @@
 .card__question-number {
   font-size: 1.5rem;
   margin-top: 50px;
-  color: rgb(77, 77, 77)
+  color: rgb(77, 77, 77);
 }
 
 .card__wrong-answer {

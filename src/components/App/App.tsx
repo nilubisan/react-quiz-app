@@ -34,8 +34,7 @@ const App: FC = () => {
   const quizOn = !loading && !quizOver;
   const quizOverAndSelectAction =
     quizOver && !quizNotStartedYet && !showUserAnswers;
-  const quizOverAndShowAnswers =
-    quizOver && showUserAnswers;
+  const quizOverAndShowAnswers = quizOver && showUserAnswers;
 
   const resetQuiz = () => {
     setQuizOver(true);
@@ -58,8 +57,8 @@ const App: FC = () => {
 
   return (
     <div className={style["app"]}>
-        <Header title="Quiz app"></Header>
-        <div className={style["container"]}>
+      <Header title="Quiz app"></Header>
+      <div className={style["container"]}>
         {quizNotStartedYet ? (
           <>
             <Greeting />

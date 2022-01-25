@@ -5,16 +5,24 @@ import styles from "./style.css";
 interface ButtonProps {
   buttonType: string;
   isActive?: boolean;
+  enableQuestionBack?: boolean;
   clickHandler: () => void;
 }
 
-const Button: FC<ButtonProps> = ({ buttonType, clickHandler, isActive }) => {
+const Button: FC<ButtonProps> = ({
+  buttonType,
+  clickHandler,
+  isActive,
+  enableQuestionBack,
+}) => {
   let { className, title } = BUTTONS[buttonType];
 
   return (
     <button
       className={`${styles["btn"]} ${styles[className]} ${
-        isActive === false ? styles["inactive"] : null
+        isActive === false || enableQuestionBack === false
+          ? styles["inactive"]
+          : null
       }`}
       onClick={clickHandler}
     >
