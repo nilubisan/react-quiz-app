@@ -1,7 +1,6 @@
 import React, { FC, useState } from "react";
 import QuestionCard from "../QuestionCard/QuestionCard";
-import questionCardStyle from "../QuestionCard/style.css";
-import style from "./style.css";
+import style from "./style.scss";
 import { QuestionState } from "../../API";
 import { UserAnswer } from "../App/App";
 import Button from "../Button/Button";

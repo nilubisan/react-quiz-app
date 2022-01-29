@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react";
 import Score from "../Score/Score";
-import style from "./style.css";
+import style from "./style.scss";
 import { fetchQuizQuestions } from "API";
 import { QuestionState } from "API";
 import Answers from "../Answers/Answers";

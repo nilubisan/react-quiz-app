@@ -9,16 +9,16 @@ import {
 
 export const BUTTONS = {
     [PREV_QUESTION]: {
-      className: "btn_std",
-      title: "Previous"
+      className: "btn_prev-move",
+      title: ""
     },
     [NEXT_QUESTION]: {
-      className: "btn_std",
-      title: "Next"
+      className: "btn_next-move",
+      title: ""
     },
     [FINISH_QUIZ]: {
       className: "btn_finish",
-      title: "Finish"
+      title: ""
     },
     [START_NEW_QUIZ]: {
       className: "btn_std",
@@ -30,6 +30,6 @@ export const BUTTONS = {
     },
     [ABORT_QUIZ]: {
       className: "btn_abort",
-      title: "Abort quiz"
+      title: ""
     }
   }

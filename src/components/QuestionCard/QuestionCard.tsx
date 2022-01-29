@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import parse from "html-react-parser";
 import { UserAnswer } from "../App/App";
-import styles from "./style.css";
+import styles from "./style.scss";
 interface Props {
   question: string;
   answers: string[];

@@ -2,7 +2,7 @@ import React, { FC, useState, useEffect } from "react";
 import { EASY, MEDIUM, HARD } from "../../utils";
 import { fetchCategories } from "../../API";
 import Loader from "../Loader/Loader";
-import style from "./style.css";
+import style from "./style.scss";
 
 /// INTERFACES
 export interface QuizOptions {
@@ -99,6 +99,16 @@ const Form: FC<{ onFormSubmit: FormProps["FormSubmitHandler"] }> = ({
       </div>
       <div className={style["form__field"]}>
       <label>
+        Difficulty:
+        </label>
+        <select onChange={setQuizDifficulty} value={quizOpts["difficulty"]}>
+          <option value={EASY}>Easy</option>
+          <option value={MEDIUM}>Medium</option>
+          <option value={HARD}>Hard</option>
+        </select>
+      </div>
+      <div className={style["form__field"]}>
+      <label>
         Amount:
         </label>
         <input
@@ -108,16 +118,6 @@ const Form: FC<{ onFormSubmit: FormProps["FormSubmitHandler"] }> = ({
           onChange={setQnsAmount}
           value={quizOpts["questionsAmount"]}
         ></input>
-      </div>
-      <div className={style["form__field"]}>
-      <label>
-        Difficulty:
-        </label>
-        <select onChange={setQuizDifficulty} value={quizOpts["difficulty"]}>
-          <option value={EASY}>Easy</option>
-          <option value={MEDIUM}>Medium</option>
-          <option value={HARD}>Hard</option>
-        </select>
       </div>
       </div>
       <div className={style["form__btn-inner"]}>

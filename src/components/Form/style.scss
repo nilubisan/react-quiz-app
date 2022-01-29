@@ -20,6 +20,13 @@
   padding: 40px 40px 30px;
   background-color: #fff;
   box-shadow: 0px 0px 20px 1px rgba(0,0,0,0.56);
+  @media (max-width: 600px) {
+    width: 100%;
+    margin-top: 30px;
+    align-items: center;
+    min-width: 300px;
+  }
+
 
 }
 
@@ -36,8 +43,13 @@
 }
 
 .form__field {
+  display: flex;
   margin-bottom: 20px;
   font-size: 1rem;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
 }
 
 .form__field:last-child {
@@ -48,6 +60,17 @@
   display: inline-block;
   width: 70px;
   margin-right: 50px;
+  @media (max-width: 600px) {
+    margin: 0 0 5px 0;
+  }
+
+}
+
+.form__field select {
+  @media (max-width: 600px) {
+    width: 200px;
+  }
+
 }
 
 .form__btn-inner {

@@ -1,8 +1,4 @@
 @font-face {
-  font-family: "Montserrat-100";
-  src: url("../../fonts/Montserrat-Thin.ttf");
-}
-@font-face {
   font-family: "Surfer-400";
   src: url("../../fonts/OriginalSurfer-Regular.ttf");
 }
@@ -11,10 +7,16 @@
     padding: 20px;
     text-align: center;
   background-color: #00afce;
+  @media (max-width: 600px) {
+    padding: 10px;
+  }
 }
 
 .header__title {
   font-family: "Surfer-400", sans-serif;
   color: #fff;
   letter-spacing: 20px;
+  @media (max-width: 600px) {
+    font-size: 1.7rem;
+  }
 }

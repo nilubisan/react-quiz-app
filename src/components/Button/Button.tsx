@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { BUTTONS } from "./BUTTONS";
-import styles from "./style.css";
+import styles from "./style.scss";
 
 interface ButtonProps {
   buttonType: string;
