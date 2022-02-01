@@ -23,6 +23,7 @@ interface QuizProps {
   setNumber: any;
   userAnswers: UserAnswer[];
   setUserAnswers: any;
+  setActiveModal: any;
 }
 
 const Quiz: FC<QuizProps> = ({
@@ -36,6 +37,7 @@ const Quiz: FC<QuizProps> = ({
   setNumber,
   userAnswers,
   setUserAnswers,
+  setActiveModal
 }) => {
   const [correctAnswer, setCorrectAnswer] = useState("");
   const [activeButton, setActiveButton] = useState(false);
@@ -84,7 +86,7 @@ const Quiz: FC<QuizProps> = ({
   };
 
   const abortQuiz = () => {
-    setQuizOver(true);
+    setActiveModal(true)
   };
 
   return (

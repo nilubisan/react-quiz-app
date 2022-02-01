@@ -64,3 +64,41 @@ $max-width: 900px;
   justify-content: space-between;
   height: 120px;
 }
+
+.modal__quiz-over {
+  
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  padding: 40px 20px;
+  border-radius: 15px;
+
+}
+
+.modal__title {
+  font-family: 'Montserrat-Medium';
+  font-size: 1.2rem;
+  text-align: center;
+  line-height: 1.5rem;
+}
+
+.modal__buttons-inner {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.modal__button {
+  border: none;
+  outline: none;
+  padding: 15px;
+  color: #727272;
+  font-family: 'roboto';
+  font-size: 1.1rem;
+  margin: 0 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  &:active {
+    transform: scale(0.9);
+  } 
+}

@@ -6,6 +6,10 @@ interface CssExports {
   'app__quiz-body': string;
   'app__score': string;
   'container': string;
+  'modal__button': string;
+  'modal__buttons-inner': string;
+  'modal__quiz-over': string;
+  'modal__title': string;
 }
 export const cssExports: CssExports;
 export default cssExports;

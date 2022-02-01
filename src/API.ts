@@ -27,7 +27,7 @@ export const fetchQuizQuestions = async (quizOptions: QuizOptions) => {
   const url = `${API_URL}/api.php?category=${category}&amount=${questionsAmount}&difficulty=${difficulty}&type=multiple`;
   const {
     data: { results },
-  } = await axios.get(url); 
+  } = await axios.get(url);
   return results.map((question: Question) => ({
     ...question,
     answers: shuffleArray([
@@ -39,7 +39,6 @@ export const fetchQuizQuestions = async (quizOptions: QuizOptions) => {
 
 export const fetchCategories = async () => {
   const url = `${API_URL}/api_category.php`;
-  const {data} = await axios.get(url);
+  const { data } = await axios.get(url);
   return data["trivia_categories"];
-
 };

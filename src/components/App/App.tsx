@@ -12,6 +12,7 @@ import Header from "../Header/Header";
 import Quiz from "../Quiz/Quiz";
 import Loader from "../Loader/Loader";
 import Greeting from "../Greeting/Greeting";
+import Modal from "../Modal/Modal";
 
 export interface UserAnswer {
   question: string;
@@ -29,6 +30,8 @@ const App: FC = () => {
   const [quizOver, setQuizOver] = useState(true);
   const [correctAnswer, setCorrectAnswer] = useState("");
   const [showUserAnswers, setShowUserAnswers] = useState(false);
+  const [activeModal, setActiveModal] = useState(false);
+  const [activeModalNoQuestions, setActiveModalNoQuestions] = useState(false);
 
   const quizNotStartedYet = questions.length === 0 && !loading;
   const quizOn = !loading && !quizOver;
@@ -51,9 +54,21 @@ const App: FC = () => {
     setQuizOver(false);
     setLoading(true);
     const newAnswers = await fetchQuizQuestions(quizOptions);
-    setQuestions(newAnswers);
-    setLoading(false);
+    if(newAnswers.length === 0) {
+      setQuizOver(true);
+      setQuestions([]);
+      setLoading(false);
+      setActiveModalNoQuestions(true);
+    } else {
+      setQuestions(newAnswers);
+      setLoading(false);
+    }
   };
+
+  const stopQuiz = () => {
+    setActiveModal(false);
+    setQuizOver(true);
+  }
 
   return (
     <div className={style["app"]}>
@@ -66,18 +81,21 @@ const App: FC = () => {
           </>
         ) : null}
         {quizOn ? (
-          <Quiz
-            quizOver={quizOver}
-            setQuizOver={setQuizOver}
-            loading={loading}
-            score={score}
-            setScore={setScore}
-            questions={questions}
-            number={number}
-            setNumber={setNumber}
-            userAnswers={userAnswers}
-            setUserAnswers={setUserAnswers}
-          ></Quiz>
+          <>
+            <Quiz
+              quizOver={quizOver}
+              setQuizOver={setQuizOver}
+              loading={loading}
+              score={score}
+              setScore={setScore}
+              questions={questions}
+              number={number}
+              setNumber={setNumber}
+              userAnswers={userAnswers}
+              setUserAnswers={setUserAnswers}
+              setActiveModal={setActiveModal}
+            ></Quiz>
+          </>
         ) : loading ? (
           <Loader />
         ) : null}
@@ -108,6 +126,23 @@ const App: FC = () => {
             ></Button>
           </>
         ) : null}
+        <Modal active={activeModal} setActive={setActiveModal}>
+          <div className={style['modal__quiz-over']}>
+          <p className={style['modal__title']}> Are you sure you want to stop the quiz? </p>
+            <div className={style["modal__buttons-inner"]}>
+              <button className={style["modal__button"]} onClick={stopQuiz}>Yes</button>
+              <button className={style["modal__button"]} onClick={() => setActiveModal(false)}>No</button>
+            </div>
+          </div>
+        </Modal>
+        <Modal active={activeModalNoQuestions} setActive={setActiveModalNoQuestions}>
+          <div className={style['modal__quiz-over']}>
+          <p className={style['modal__title']}> Sorry, but we couldn't find any questions with given parameters. Try to change quiz options </p>
+            <div className={style["modal__buttons-inner"]}>
+              <button className={style["modal__button"]} onClick={() => setActiveModalNoQuestions(false)}>Ok</button>
+            </div>
+          </div>
+        </Modal>
       </div>
     </div>
   );
