@@ -37,7 +37,7 @@ const Quiz: FC<QuizProps> = ({
   setNumber,
   userAnswers,
   setUserAnswers,
-  setActiveModal
+  setActiveModal,
 }) => {
   const [correctAnswer, setCorrectAnswer] = useState("");
   const [activeButton, setActiveButton] = useState(false);
@@ -86,7 +86,7 @@ const Quiz: FC<QuizProps> = ({
   };
 
   const abortQuiz = () => {
-    setActiveModal(true)
+    setActiveModal(true);
   };
 
   return (

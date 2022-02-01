@@ -19,7 +19,7 @@ const Button: FC<ButtonProps> = ({
 
   return (
     <button
-      className={`${styles["btn"]} ${styles[className]} ${
+      className={`${styles[className]} ${
         isActive === false || enableQuestionBack === false
           ? styles["inactive"]
           : null

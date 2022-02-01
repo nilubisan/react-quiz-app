@@ -6,7 +6,7 @@ export const NEXT_QUESTION = "NEXT QUESTION";
 export const FINISH_QUIZ = "FINISH GAME";
 export const START_NEW_QUIZ = "START NEW QUIZ";
 export const SHOW_ANSWERS = "SHOW ANSWERS";
-export const ABORT_QUIZ = "ABORT QUIZ"
+export const ABORT_QUIZ = "ABORT QUIZ";
 
 export const EASY = "easy";
 export const MEDIUM = "medium";

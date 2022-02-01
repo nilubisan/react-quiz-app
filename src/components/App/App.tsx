@@ -54,7 +54,7 @@ const App: FC = () => {
     setQuizOver(false);
     setLoading(true);
     const newAnswers = await fetchQuizQuestions(quizOptions);
-    if(newAnswers.length === 0) {
+    if (newAnswers.length === 0) {
       setQuizOver(true);
       setQuestions([]);
       setLoading(false);
@@ -68,7 +68,7 @@ const App: FC = () => {
   const stopQuiz = () => {
     setActiveModal(false);
     setQuizOver(true);
-  }
+  };
 
   return (
     <div className={style["app"]}>
@@ -127,19 +127,41 @@ const App: FC = () => {
           </>
         ) : null}
         <Modal active={activeModal} setActive={setActiveModal}>
-          <div className={style['modal__quiz-over']}>
-          <p className={style['modal__title']}> Are you sure you want to stop the quiz? </p>
+          <div className={style["modal__quiz-over"]}>
+            <p className={style["modal__title"]}>
+              {" "}
+              Are you sure you want to stop the quiz?{" "}
+            </p>
             <div className={style["modal__buttons-inner"]}>
-              <button className={style["modal__button"]} onClick={stopQuiz}>Yes</button>
-              <button className={style["modal__button"]} onClick={() => setActiveModal(false)}>No</button>
+              <button className={style["modal__button"]} onClick={stopQuiz}>
+                Yes
+              </button>
+              <button
+                className={style["modal__button"]}
+                onClick={() => setActiveModal(false)}
+              >
+                No
+              </button>
             </div>
           </div>
         </Modal>
-        <Modal active={activeModalNoQuestions} setActive={setActiveModalNoQuestions}>
-          <div className={style['modal__quiz-over']}>
-          <p className={style['modal__title']}> Sorry, but we couldn't find any questions with given parameters. Try to change quiz options </p>
+        <Modal
+          active={activeModalNoQuestions}
+          setActive={setActiveModalNoQuestions}
+        >
+          <div className={style["modal__quiz-over"]}>
+            <p className={style["modal__title"]}>
+              {" "}
+              Sorry, but we couldn't find any questions with given parameters.
+              Try to change quiz options{" "}
+            </p>
             <div className={style["modal__buttons-inner"]}>
-              <button className={style["modal__button"]} onClick={() => setActiveModalNoQuestions(false)}>Ok</button>
+              <button
+                className={style["modal__button"]}
+                onClick={() => setActiveModalNoQuestions(false)}
+              >
+                Ok
+              </button>
             </div>
           </div>
         </Modal>

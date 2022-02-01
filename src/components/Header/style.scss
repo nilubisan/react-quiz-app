@@ -3,9 +3,9 @@
   src: url("../../fonts/OriginalSurfer-Regular.ttf");
 }
 .header {
-    width: 100%;
-    padding: 20px;
-    text-align: center;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
   background-color: #00afce;
   @media (max-width: 600px) {
     padding: 10px;
@@ -16,6 +16,7 @@
   font-family: "Surfer-400", sans-serif;
   color: #fff;
   letter-spacing: 20px;
+  user-select: none;
   @media (max-width: 600px) {
     font-size: 1.7rem;
   }

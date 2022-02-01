@@ -21,9 +21,13 @@
   cursor: pointer;
   padding: 10px 50px;
   border-radius: 30px;
+  &:active {
+    transform: scale(0.9);
+  }
 }
 
 .btn_std {
+  @extend .btn;
   font-family: "Montserrat-400", sans-serif;
   font-size: 1.2rem;
   color: #fff;
@@ -31,6 +35,7 @@
 }
 
 .btn_move {
+  @extend .btn;
   background: #3db39e no-repeat center;
   width: 45px;
   height: 40px;
@@ -38,36 +43,39 @@
 
 .btn_next-move {
   @extend .btn_move;
-  background-image: url('../../images/next.png');
+  background-image: url("../../images/next.png");
 }
 
 .btn_prev-move {
   @extend .btn_move;
-  background-image: url('../../images/prev.png');
+  background-image: url("../../images/prev.png");
 }
 
-
 .btn_finish {
-
+  @extend .btn;
   background: #3db39e no-repeat center;
-  background-image: url('../../images/finish.png');
+  background-image: url("../../images/finish.png");
   width: 45px;
   height: 40px;
-  
 }
 
 .btn_abort {
+  @extend .btn;
   background: #e21b1b no-repeat center;
-  background-image: url('../../images/cancel.png');
+  background-image: url("../../images/cancel.png");
   position: absolute;
   bottom: 5px;
   left: 50%;
   transform: translateX(-50%);
   width: 32px;
   height: 30px;
+  &:active {
+    transform: translateX(-50%) scale(0.9);
+  }
 }
 
 .btn_show-answers {
+  @extend .btn;
   background-color: #3d6ed6;
   color: #fff;
   font-size: 1.2rem;

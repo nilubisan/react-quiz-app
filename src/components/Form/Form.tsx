@@ -37,8 +37,8 @@ const Form: FC<{ onFormSubmit: FormProps["FormSubmitHandler"] }> = ({
   }, []);
 
   const getQnsCategories = async () => {
-      const categories = await fetchCategories();
-      return categories;
+    const categories = await fetchCategories();
+    return categories;
   };
 
   const setQnsCategories = async () => {
@@ -79,51 +79,48 @@ const Form: FC<{ onFormSubmit: FormProps["FormSubmitHandler"] }> = ({
   return questionsCategories ? (
     <form className={style["form"]} onSubmit={handleFormSubmit}>
       <div className={style["form__field-inner"]}>
-      <div className={style["form__field"]}>
-        <label>
-          Category:
-        </label>
-        <select
-          onChange={setQuizCategory}
-          value={quizOpts["category"]["id"]}
-          required
-        >
-          {questionsCategories
-            ? questionsCategories.map((cat) => (
-                <option key={cat.id} value={cat.id}>
-                  {cat.name}
-                </option>
-              ))
-            : null}
-        </select>
-      </div>
-      <div className={style["form__field"]}>
-      <label>
-        Difficulty:
-        </label>
-        <select onChange={setQuizDifficulty} value={quizOpts["difficulty"]}>
-          <option value={EASY}>Easy</option>
-          <option value={MEDIUM}>Medium</option>
-          <option value={HARD}>Hard</option>
-        </select>
-      </div>
-      <div className={style["form__field"]}>
-      <label>
-        Amount:
-        </label>
-        <input
-          type="number"
-          min={1}
-          max={50}
-          onChange={setQnsAmount}
-          value={quizOpts["questionsAmount"]}
-        ></input>
-      </div>
+        <div className={style["form__field"]}>
+          <label>Category:</label>
+          <select
+            onChange={setQuizCategory}
+            value={quizOpts["category"]["id"]}
+            required
+          >
+            {questionsCategories
+              ? questionsCategories.map((cat) => (
+                  <option key={cat.id} value={cat.id}>
+                    {cat.name}
+                  </option>
+                ))
+              : null}
+          </select>
+        </div>
+        <div className={style["form__field"]}>
+          <label>Difficulty:</label>
+          <select onChange={setQuizDifficulty} value={quizOpts["difficulty"]}>
+            <option value={EASY}>Easy</option>
+            <option value={MEDIUM}>Medium</option>
+            <option value={HARD}>Hard</option>
+          </select>
+        </div>
+        <div className={style["form__field"]}>
+          <label>Amount:</label>
+          <input
+            type="number"
+            min={1}
+            max={50}
+            onChange={setQnsAmount}
+            value={quizOpts["questionsAmount"]}
+          ></input>
+        </div>
       </div>
       <div className={style["form__btn-inner"]}>
-      <input type="submit" className={style["form__btn"]} value="Start"></input>
+        <input
+          type="submit"
+          className={style["form__btn"]}
+          value="Start"
+        ></input>
       </div>
-      
     </form>
   ) : (
     <Loader />

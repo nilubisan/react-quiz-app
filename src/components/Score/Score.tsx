@@ -1,15 +1,11 @@
 import React, { FC, useState } from "react";
-import style from "./style.css";
-
-const BAD = "bad";
-const GOOD = "good";
-const AWESOME = "awesome"
+import style from "./style.scss";
 
 const resultMessage = {
-  "bad": "Not so good...Try another one",
-  "good": "Great!",
-  "awesome": "Perfect! You are a genius!"
-}
+  bad: "Not so good...Try another one",
+  good: "Great!",
+  awesome: "Perfect! You are a genius!",
+};
 
 const Score: FC<{ score: number; percentage: number }> = ({
   score,
@@ -23,7 +19,9 @@ const Score: FC<{ score: number; percentage: number }> = ({
       <h2 className={`${style["score__rating"]} ${style[scoreLevel]}`}>
         {score}
       </h2>
-      <p className={style["score__result-message"]}>{resultMessage[scoreLevel]}</p>
+      <p className={style["score__result-message"]}>
+        {resultMessage[scoreLevel]}
+      </p>
     </div>
   );
 };
