@@ -25,7 +25,7 @@ $card-correct-answer: #00ff00;
   padding: 40px;
   margin-top: 20px;
   background-color: #fff;
-  @media (max-width: 800px) {
+  @media (max-width: 800px) , (max-height: 720px){
     padding: 20px;
   }
 }
@@ -43,14 +43,14 @@ $card-correct-answer: #00ff00;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  @media (max-width: 600px) {
+  @media (max-width: 600px), (max-height: 720px) {
     flex-direction: column;
   }
 }
 
 .card__answer-btn-inner {
   padding: 20px;
-  @media (max-width: 600px) {
+  @media (max-width: 600px), (max-height: 720px) {
     padding: 10px;
   }
 }
@@ -72,7 +72,7 @@ $card-correct-answer: #00ff00;
     width: 200px;
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 600px), (max-height: 720px) {
     width: 100%;
   }
 }
@@ -83,6 +83,9 @@ $card-correct-answer: #00ff00;
   color: rgb(77, 77, 77);
   @media (max-width: 600px) {
     margin-top: 30px;
+  }
+  @media (max-height: 720px) {
+    margin-top: 10px;
   }
 }
 
