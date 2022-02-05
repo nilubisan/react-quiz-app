@@ -24,6 +24,9 @@
   &:active {
     transform: scale(0.9);
   }
+  @media(max-height: 720px) {
+    padding: 10px 40px;
+  }
 }
 
 .btn_std {

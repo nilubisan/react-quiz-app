@@ -47,6 +47,9 @@ $max-width: 900px;
 
 .app__quiz-body {
   margin: 70px 0;
+  @media (max-height: 720px) {
+    margin: 20px 0
+  }
 }
 
 .app__score {
