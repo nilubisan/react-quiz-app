@@ -1,0 +1,9 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "react", "jsx-a11y"],
+  "extends": ["plugin:react/recommended", "airbnb", "airbnb-typescript"],
+  "root": true ,
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  }
+}
