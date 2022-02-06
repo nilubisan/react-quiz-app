@@ -16,6 +16,7 @@ interface QuizProps {
   quizOver: boolean;
   setQuizOver: any;
   loading: boolean;
+  setLoading: any;
   score: number;
   setScore: any;
   questions: QuestionState[];
@@ -30,6 +31,7 @@ const Quiz: FC<QuizProps> = ({
   quizOver,
   setQuizOver,
   loading,
+  setLoading,
   score,
   setScore,
   questions,
@@ -82,7 +84,13 @@ const Quiz: FC<QuizProps> = ({
     }
   };
   const finishQuiz = () => {
-    if (activeButton) setQuizOver(true);
+    if (activeButton) {
+      setLoading(true);
+      setTimeout(() => {
+        setLoading(false);
+        setQuizOver(true);
+      }, 500)
+    }
   };
 
   const abortQuiz = () => {

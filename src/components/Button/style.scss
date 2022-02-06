@@ -24,7 +24,7 @@
   &:active {
     transform: scale(0.9);
   }
-  @media(max-height: 720px) {
+  @media (max-height: 720px) {
     padding: 10px 30px;
     background-size: 20px;
   }
@@ -51,7 +51,6 @@
 .btn_next-move {
   @extend .btn_move;
   background-image: url("../../images/next.png");
-
 }
 
 .btn_prev-move {
@@ -68,14 +67,13 @@
   @media (max-height: 720px) {
     background-size: 20px;
   }
-  
 }
 
 .btn_abort {
   @extend .btn;
   background: #e21b1b no-repeat center;
   background-image: url("../../images/cancel.png");
-  position:fixed;
+  position: fixed;
   bottom: 5px;
   left: 50%;
   transform: translateX(-50%);
@@ -87,7 +85,6 @@
   @media (max-height: 720px) {
     background-size: 20px;
   }
-
 }
 
 .btn_show-answers {

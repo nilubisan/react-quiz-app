@@ -86,6 +86,7 @@ const App: FC = () => {
               quizOver={quizOver}
               setQuizOver={setQuizOver}
               loading={loading}
+              setLoading={setLoading}
               score={score}
               setScore={setScore}
               questions={questions}
