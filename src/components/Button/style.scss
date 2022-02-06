@@ -25,7 +25,8 @@
     transform: scale(0.9);
   }
   @media(max-height: 720px) {
-    padding: 10px 40px;
+    padding: 10px 30px;
+    background-size: 20px;
   }
 }
 
@@ -42,11 +43,15 @@
   background: #3db39e no-repeat center;
   width: 45px;
   height: 40px;
+  @media (max-height: 720px) {
+    background-size: 20px;
+  }
 }
 
 .btn_next-move {
   @extend .btn_move;
   background-image: url("../../images/next.png");
+
 }
 
 .btn_prev-move {
@@ -60,13 +65,17 @@
   background-image: url("../../images/finish.png");
   width: 45px;
   height: 40px;
+  @media (max-height: 720px) {
+    background-size: 20px;
+  }
+  
 }
 
 .btn_abort {
   @extend .btn;
   background: #e21b1b no-repeat center;
   background-image: url("../../images/cancel.png");
-  position: absolute;
+  position:fixed;
   bottom: 5px;
   left: 50%;
   transform: translateX(-50%);
@@ -75,6 +84,10 @@
   &:active {
     transform: translateX(-50%) scale(0.9);
   }
+  @media (max-height: 720px) {
+    background-size: 20px;
+  }
+
 }
 
 .btn_show-answers {

@@ -110,7 +110,7 @@ const Form: FC<{ onFormSubmit: FormProps["FormSubmitHandler"] }> = ({
             min={1}
             max={50}
             onChange={setQnsAmount}
-            value={quizOpts["questionsAmount"]}
+            required
           ></input>
         </div>
       </div>
